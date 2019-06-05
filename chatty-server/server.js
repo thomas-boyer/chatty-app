@@ -1,5 +1,6 @@
 const express = require('express');
 const SocketServer = require('ws').Server;
+const uuidv4 = require('uuid/v4');
 
 // Set the port to 3001
 const PORT = 3001;
@@ -26,13 +27,27 @@ function isJSONString(string)
   }
 }
 
-wss.on('connection', (ws) => {
+wss.on('connection', (ws) =>
+{
+  console.log("Client has connected");
 
-  ws.on('message', function incoming(data) {
+  ws.on('message', function incoming(data)
+  {
     const messageObj = isJSONString(data);
     if (messageObj)
     {
-      if (messageObj.type === "incomingMessage") console.log(`User ${messageObj.username} said "${messageObj.content}"`)
+      const { username, content, type } = messageObj;
+      const response =
+      {
+        key: uuidv4(),
+        username,
+        content,
+        type
+      };
+      wss.clients.forEach(function each(client)
+      {
+        client.send(JSON.stringify(response));
+      });
     }
     else console.log(data);
   });
