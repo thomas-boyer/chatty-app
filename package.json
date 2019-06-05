@@ -1,7 +1,7 @@
 {
-  "name": "react-simple-boilerplate",
+  "name": "ChattyApp",
   "version": "1.0.0",
-  "description": "Simple and lightweight Boilerplate for ReactJS projects",
+  "description": "Simple chat client using React and socket.io",
   "scripts": {
     "lint": "eslint --ext .jsx,.js src",
     "start": "node server.js"
@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "react": "15.4.2",
-    "react-dom": "15.4.2"
+    "react-dom": "15.4.2",
+    "ws": "7.0.0"
   }
 }

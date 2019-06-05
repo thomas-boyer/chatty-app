@@ -1,16 +1,13 @@
 import React, {Component} from 'react';
 
-class ChatBar extends Component
+const ChatBar = ({currentUser, submitMessage, submitUsername}) =>
 {
-  render()
-  {
-    return (
-      <div className="chatbar">
-        <input className="chatbar-username" placeholder="Your Name (Optional)" />
-        <input className="chatbar-message" placeholder="Type a message and hit ENTER" />
-      </div>
-    )
-  }
+  return (
+    <form className="chatbar">
+      <input className="chatbar-username" placeholder="Your Name (Optional)" defaultValue={currentUser} onKeyPress={submitUsername}/>
+      <input className="chatbar-message" placeholder="Type a message and hit ENTER" onKeyPress={submitMessage}/>
+    </form>
+  )
 }
 
 export default ChatBar;

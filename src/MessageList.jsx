@@ -3,10 +3,9 @@ import Message from './Message.jsx';
 
 const MessageList = ({messages}) =>
 {
-  console.log(messages);
   const theMessages = messages.map( (message) =>
     {
-      return (<Message type={message.type} content={message.content} username={message.username}/>)
+      return (<Message type={message.type} content={message.content} username={message.username} key={message.key}/>)
     });
 
   return (
