@@ -3,14 +3,14 @@ import Message from './Message.jsx';
 
 const MessageList = ({messages}) =>
 {
-  const theMessages = messages.map( (message) =>
+  const renderMessages = messages.map( (message) =>
     {
-      return (<Message type={message.type} content={message.content} username={message.username} key={message.key}/>)
+      return (<Message type={message.type} content={message.content} username={message.username} key={message.key} color={message.color}/>)
     });
 
   return (
     <div>
-      { theMessages }
+      { renderMessages }
     </div>
   );
 }
