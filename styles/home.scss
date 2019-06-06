@@ -35,6 +35,12 @@ body {
   flex: 2;
 }
 
+img {
+  max-width: 60%;
+  margin-left: 20px;
+  object-fit: contain;
+}
+
 .message {
   display: flex;
   padding: 5px;
@@ -63,6 +69,10 @@ body {
 
 .navbar {
   background: tomato;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid black;
   height: 60px;
   left: 0;
@@ -82,4 +92,9 @@ body {
   line-height: 60px;
   padding: 0 10px;
   text-decoration: none;
+}
+
+.num-users {
+  font-weight: 700;
+  margin-right: 10px;
 }
