@@ -15,7 +15,6 @@ const Message = ({ type, content, username, color }) =>
   const images = getImages(content);
   const imageElements = (images && images.map( (image) =>
     {
-      console.log("Here");
       return (<img src={image} />);
     }));
   return (
