@@ -1,45 +1,46 @@
-React Boilerplate
+ChattyApp
 =====================
 
-A minimal and light dev environment for ReactJS.
+A small chat client made using React and WebSockets.
 
-### Usage
+Users can connect to a server and send messages to one another. Users can select custom usernames and, if they post a valid link to an online image, the app will display the image.
 
-Clone the boilerplate and create your own git repo.
+### Pix
 
-```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
-```
+!["The chat app"](https://github.com/thomas-boyer/chatty-app/blob/master/docs/chatty-1.png)
 
-Install the dependencies and start the server.
+### Start it up!
+
+Clone and navigate to the project.
 
 ```
-npm install
+git clone git@github.com:thomas-boyer/chatty-app.git
+cd chatty-app
+```
+
+Install the server dependencies and run the server.
+
+```
+cd chatty-server
+npm i
+node server.js
+```
+
+In a new shell tab, navigate to the top level, install the client-side dependencies, and run the app.
+
+```
+cd chatty-app
+npm i
 npm start
-open http://localhost:3000
 ```
 
-### Static Files
+### Client-side dependencies
 
-You can store static files like images, fonts, etc in the `build` folder.
+* [React](https://github.com/facebook/react)
+* [React-DOM](https://github.com/facebook/react/tree/master/packages/react-dom)
 
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
+### Server-side dependencies
 
-### Linting
-
-This boilerplate project includes React ESLint configuration.
-
-```
-npm run lint
-```
-
-### Dependencies
-
-* React
-* Webpack
-* [babel-loader](https://github.com/babel/babel-loader)
-* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+* [Express](https://github.com/expressjs/express)
+* [UUID](https://github.com/kelektiv/node-uuid)
+* [ws](https://github.com/websockets/ws)
