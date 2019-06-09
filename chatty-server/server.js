@@ -1,5 +1,7 @@
 const express = require('express');
 const SocketServer = require('ws').Server;
+
+//Generate unique IDs for each message so React can iterate through them efficiently
 const uuidv4 = require('uuid/v4');
 
 // Set the port to 3001
@@ -15,6 +17,7 @@ const server = express()
 const wss = new SocketServer({ server });
 const clients = [];
 
+//Check if string can be parsed as a JSON, and return the JSON if so; if not, return false
 function isJSONString(string)
 {
   try
@@ -37,9 +40,12 @@ function randomColor()
 wss.on('connection', (ws) =>
 {
   console.log("Client has connected");
+
+  //Assign a consistent username and color to the socket client
   ws.username = 'Anonymous';
   ws.color = randomColor();
 
+  //Broadcast to each user when a new user has joined the chat
   wss.clients.forEach( (client) =>
     {
       const joinMessage =
@@ -58,10 +64,12 @@ wss.on('connection', (ws) =>
 
     if (messageObj)
     {
+      //For username changes, assign the new username to the websocket client
       if (messageObj.type === 'incomingNotification')
       {
         ws.username = messageObj.username;
       }
+      //Broadcast the message to all users
       const { username, content, type } = messageObj;
       const response =
       {
@@ -76,6 +84,7 @@ wss.on('connection', (ws) =>
         client.send(JSON.stringify(response));
       });
     }
+    //If a non-JSON message is sent, simply console.log the contents
     else console.log(data);
   });
 
